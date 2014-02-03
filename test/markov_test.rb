@@ -5,21 +5,10 @@ class MarkovTest < MiniTest::Test
     @states_seq = [
       [nil, 'purple', 'orange', 'blue',   'blue', 'blue', nil], #Jan 12 - 18
       [nil, 'maroon', 'blue',   'blue',   'blue', 'blue', nil], #Jan 19 - 25
-      [nil, nil,      'blue',   'orange', 'blue', 'blue', nil]
+      [nil, nil,      'blue',   'orange', 'blue', 'blue', nil],
+      ['green', 'blue'] # Feb 2 - 8
     ].flatten.compact
-    @markov = Markov.new states_seq
-  end
-
-  def test_states_returns_all_states
-    states = ["purple", "orange", "blue", "maroon"]
-
-    assert_equal states, markov.states
-  end
-
-  def test_next_return_the_prediction_within_the_state_spaces
-    next_state = markov.next
-
-    assert_includes markov.states, next_state
+    @markov = Markov.new states_seq, 4
   end
 
   def test_next_return_the_current_prediction
