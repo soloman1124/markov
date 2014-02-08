@@ -5,11 +5,10 @@ class NgramTest < MiniTest::Test
     @states_seq = %w(A B C A B A A B)
   end
 
-  def test_bigram_returns_probabilities_for_next_states
+  def test_bigram_returns_probabilities_for_next_state
     bigram = ngram
-    result = {"B" => 0.75, "A" => 0.25}
 
-    assert_equal result, bigram.next_states(["A"])
+    assert_equal "B", bigram.next_state(["A"])
   end
 
   private
