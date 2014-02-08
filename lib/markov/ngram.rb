@@ -18,7 +18,7 @@ class Markov
     def store
       @store ||= states_sequence.each_cons(n).
         each_with_object(Hash.new FrequencyStore.new) do |states, hash|
-          base, target = states.take(states.count - 1), states.last
+          base, target = states.take(states.count - 1).sort, states.last
           hash[base].add target
         end
     end
